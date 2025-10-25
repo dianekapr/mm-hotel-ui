@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-// import Navbar from "@/components/navbar";
-// import Footer from "@/components/footer";
-// import { ToastContainer } from "react-toastify";
-// import { WishlistProvider } from "@/context/wishlistContext";
+import "./globals.css"; 
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Welcome • Ulaman Eco Luxury Resort",
@@ -14,16 +10,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
-        {/* <WishlistProvider>
-          <Navbar /> */}
-          <main>{children}</main>
-          {/* <Footer />
-          <ToastContainer />
-        </WishlistProvider> */}
+      <body className="font-sans bg-[#F7F7F7] text-black">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
-  )
+  );
 }
-
-

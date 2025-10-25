@@ -1,4 +1,4 @@
-export type Room = {
+export type roomType = {
   id: number
   name: string
   slug: string
@@ -12,7 +12,7 @@ export type Room = {
   pricePerNight: string
 }
 
-export type Activity = {
+export type activityType = {
   id: number
   name: string
   description: string[]
@@ -23,7 +23,7 @@ export type Activity = {
   category: "wellness" | "adventure" | "cultural"
 }
 
-export type Package = {
+export type packageType = {
   id: number
   name: string
   duration: string
@@ -34,7 +34,7 @@ export type Package = {
   includes: string[]
 }
 
-export type Experience = {
+export type experienceType = {
   id: number
   imageUrl: string
   name: string
@@ -43,7 +43,7 @@ export type Experience = {
   duration?: string
 }
 
-export type Retreat = {
+export type retreatType = {
   id: number
   name: string
   duration: string
@@ -55,7 +55,7 @@ export type Retreat = {
   schedule: string[]
 }
 
-export type Facility = {
+export type facilityType = {
   id: number
   name: string
   imageUrl: string
@@ -63,7 +63,7 @@ export type Facility = {
   icon?: string
 }
 
-export type Review = {
+export type reviewType = {
   id: number
   content: string
   author: string
@@ -71,7 +71,7 @@ export type Review = {
   role?: string
 }
 
-export type NavLink = {
+export type NavLinkType = {
   label: string
   href: string
 }
@@ -86,21 +86,21 @@ export type MapSectionProps = {}
 export type FooterProps = {}
 
 export type RoomsCardProps = {
-  room: Room
+  room: roomType
 }
 
 export type ActivityCardProps = {
-  activity: Activity
+  activity: activityType
 }
 
 export type PackageCardProps = {
-  package: Package
+  package: packageType
 }
 
 export type RetreatCardProps = {
-  retreat: Retreat
+  retreat: retreatType
 }
 
 export type ExperienceCardProps = {
-  experience: Experience
+  experience: experienceType
 }

@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
-import type { Activity } from "@/types"
+import type { activityType } from "@/types"
 
 export async function GET() {
-  const activities: Activity[] = [
+  const activities: activityType[] = [
     {
       id: 1,
       name: "Private Yoga Session",

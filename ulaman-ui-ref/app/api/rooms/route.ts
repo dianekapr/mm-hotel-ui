@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
-import type { Room } from "@/types"
+import type { roomType } from "@/types"
 
 export async function GET() {
-  const rooms: Room[] = [
+  const rooms: roomType[] = [
     {
       id: 1,
       name: "Floating Lake",

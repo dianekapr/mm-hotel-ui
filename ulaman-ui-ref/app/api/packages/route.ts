@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
-import type { Package } from "@/types"
+import type { packageType } from "@/types"
 
 export async function GET() {
-  const packages: Package[] = [
+  const packages: packageType[] = [
     {
       id: 1,
       name: "The Avatar Experience",
