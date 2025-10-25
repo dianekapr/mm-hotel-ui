@@ -1,30 +1,29 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Playfair_Display, Lora } from "next/font/google"
-import { Analytics } from "@vercel/analytics/react"
-import "./globals.css"
-
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" })
-const lora = Lora({ subsets: ["latin"], variable: "--font-sans" })
+import type { Metadata } from "next";
+// import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+// import Navbar from "@/components/navbar";
+// import Footer from "@/components/footer";
+// import { ToastContainer } from "react-toastify";
+// import { WishlistProvider } from "@/context/wishlistContext";
 
 export const metadata: Metadata = {
-  title: "Ulaman Eco Luxury Resort | Bali Wellness Retreat",
-  description:
-    "Award-winning eco-luxury resort in Bali offering wellness retreats, luxury accommodations, and authentic Balinese experiences.",
-  generator: "v0.app",
-}
+  title: "Welcome • Ulaman Eco Luxury Resort",
+  description: "Ulaman Eco Luxury Resort, Bali",
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${lora.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+      <body>
+        {/* <WishlistProvider>
+          <Navbar /> */}
+          <main>{children}</main>
+          {/* <Footer />
+          <ToastContainer />
+        </WishlistProvider> */}
       </body>
     </html>
   )
 }
+
+

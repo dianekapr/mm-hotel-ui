@@ -5,7 +5,11 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}', 
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        cream: '#f4e1c1', // You can change this to match the exact cream color you want
+      },
+    },
   },
   plugins: [],
 }

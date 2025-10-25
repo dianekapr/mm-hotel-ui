@@ -1,6 +1,7 @@
 export type Room = {
   id: number
   name: string
+  slug: string
   availability: string
   size: string
   capacity: number

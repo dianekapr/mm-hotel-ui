@@ -5,7 +5,8 @@ export async function GET() {
   const rooms: Room[] = [
     {
       id: 1,
-      name: "Floating Lake Villa",
+      name: "Floating Lake",
+      slug: "floating-lake",
       availability: "5 Units Available",
       size: "52m²",
       capacity: 3,
@@ -17,7 +18,8 @@ export async function GET() {
     },
     {
       id: 2,
-      name: "Cocoon Jungle Villa",
+      name: "Cocoon Jungle",
+      slug: "cocoon-jungle",
       availability: "3 Units Available",
       size: "72m²",
       capacity: 2,
@@ -31,6 +33,7 @@ export async function GET() {
     {
       id: 3,
       name: "Avatar Tree House",
+      slug: "avatar-tree-house",
       availability: "4 Units Available",
       size: "64m²",
       capacity: 3,

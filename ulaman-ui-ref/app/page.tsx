@@ -1,64 +1,34 @@
-'use client'
-import { FC, useEffect, useState } from 'react';
-import HeroSection from './components/HeroSect';
-import VillaCard from './components/VillaCard';
-import ExperienceCard from './components/ExperienceCard';
+export const dynamic = "force-dynamic";
 
-interface Villa {
-  id: number;
-  imageUrl: string;
-  name: string;
-  description: string;
-}
+// import Banner from "@/components/banner";
+// import SliderReview from "@/components/custReview";
+// import DetailInfo from "@/components/detailInfo";
+// import FeaturedProducts from "@/components/featuredProduct";
 
-interface Experience {
-  id: number;
-  imageUrl: string;
-  name: string;
-  description: string;
-  price: string | number;
-}
-
-const HomePage: FC = () => {
-  const [villas, setVillas] = useState<Villa[]>([]);
-  const [experiences, setExperiences] = useState<Experience[]>([]);
-
-  useEffect(() => {
-    // Fetch villas and experiences data from APIs
-    fetch('/api/villas')
-      .then(res => res.json())
-      .then(data => setVillas(data));
-
-    fetch('/api/experiences')
-      .then(res => res.json())
-      .then(data => setExperiences(data));
-  }, []);
-
+export default function Home() {
   return (
-    <div>
-      <HeroSection />
-      <section className="py-16">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Our Villas</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {villas.map((villa) => (
-              <VillaCard key={villa.id} villa={villa} />
-            ))}
-          </div>
-        </div>
+    <div className="bg-[#D8E2DC] text-black">
+      <section className="relative w-full h-[400px] md:h-[550px] overflow-hidden">
+        <video
+          src="/video.mp4"
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover"
+        />
       </section>
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Exclusive Experiences</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {experiences.map((experience) => (
-              <ExperienceCard key={experience.id} experience={experience} />
-            ))}
-          </div>
-        </div>
-      </section>
+
+      {/* <DetailInfo />
+
+      <SliderReview />
+
+      <FeaturedProducts /> */}
+
+      <div className="py-6">
+        {/* <Banner /> */}
+      </div>
+
+      {/* <LayerSection /> */}
     </div>
   );
-};
-
-export default HomePage;
+}
