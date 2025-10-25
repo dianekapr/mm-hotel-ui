@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream: '#f4e1c1', // You can change this to match the exact cream color you want
+        cream: '#f4e1c1', 
       },
     },
   },
