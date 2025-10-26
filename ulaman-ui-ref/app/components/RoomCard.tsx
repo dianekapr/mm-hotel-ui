@@ -1,18 +1,20 @@
-// /components/VillaCard.tsx
-interface Villa {
-  imageUrl: string;
-  name: string;
-  description: string;
-}
+import React from "react";
+import { RoomsCardProps } from "@/types";
 
-export default function VillaCard({ villa }: { villa: Villa }) {
+export const RoomCard = ({ room }: RoomsCardProps) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-      <img src={villa.imageUrl} alt={villa.name} className="w-full h-64 object-cover" />
+    <div className="border rounded-lg overflow-hidden shadow-lg">
+      <img
+        src={room.imageUrl[0]}
+        alt={room.name}
+        className="w-full h-48 object-cover"
+      />
       <div className="p-4">
-        <h3 className="text-xl font-semibold">{villa.name}</h3>
-        <p>{villa.description}</p>
+        <h3 className="text-xl font-bold">{room.name}</h3>
+        <p className="text-gray-500">{room.size} | {room.capacity} guests</p>
+        <p className="mt-2">{room.description}</p>
+        <p className="mt-4 text-lg font-semibold">{room.pricePerNight}</p>
       </div>
     </div>
   );
-}
+};
