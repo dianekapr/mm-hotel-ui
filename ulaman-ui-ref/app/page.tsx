@@ -13,6 +13,7 @@ import MapSection from "./components/MapSection";
 import WeeklySched from "./components/WeeklySched";
 import Footer from "./components/Footer";
 import Activities from "./components/Activites";
+import Tagline from "./components/Tagline";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+
+      <Tagline />
 
       <div id="about" className="py-6">
         <About />

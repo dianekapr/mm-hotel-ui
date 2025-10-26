@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import "./globals.css"; 
-import { Geist, Geist_Mono } from "next/font/google"
-import { Playfair_Display } from "next/font/google"
-import Footer from "./components/Footer";
+import "./globals.css";
+import { geist } from "./fonts"; 
 import Navbar from "./components/Navbar";
-
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-const _playfair = Playfair_Display({ subsets: ["latin"] })
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Welcome • Ulaman Eco Luxury Resort",
   description: "Ulaman Eco Luxury Resort, Bali",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#D8E2DC] text-black">
+      <body className={`${geist.className} antialiased bg-[#D8E2DC] text-black`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
