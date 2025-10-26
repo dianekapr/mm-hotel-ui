@@ -5,7 +5,8 @@ export type roomType = {
   availability: string
   size: string
   capacity: number
-  roomType: string[]
+  type: string[]
+  shortDesc: string
   description: string
   features: string[]
   imageUrl: string[]

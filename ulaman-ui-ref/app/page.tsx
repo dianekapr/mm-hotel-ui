@@ -22,15 +22,9 @@ export default function Home() {
 
       <Hero />
 
-      <Tagline />
-
-      <div id="about" className="py-6">
-        <About />
-      </div>
-
-      <section id="rooms" className="py-6">
+      <Tagline />        
+      <About />
         <Room />
-      </section>
 
       <section id="activities" className="py-6">
         <Activities />

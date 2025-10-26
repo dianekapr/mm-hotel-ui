@@ -101,7 +101,7 @@ export default function About() {
           <Link
             href="/about"
             className="group inline-block mt-8 text-[13px] font-semibold tracking-wide uppercase relative no-underline"
-            style={{ color: GOLD }}
+            style={{ color: GOLD, textDecoration: "none" }}
           >
             <span className="relative z-10">ABOUT US</span>
             <span className="block w-full h-[1.5px] bg-current mt-0.5 transition-all duration-300 group-hover:opacity-0" />
