@@ -34,6 +34,8 @@ export default function Home() {
         <ArchMediaHero src="/arch-media.avif" 
         />
 
+        <Package/>
+
 
       <section id="activities" className="py-6">
         <Activities />
@@ -49,10 +51,6 @@ export default function Home() {
 
       <section id="retreats" className="py-6">
         <Retreats />
-      </section>
-
-      <section id="packages" className="py-6">
-        <Package />
       </section>
 
       <section id="schedule" className="py-6">

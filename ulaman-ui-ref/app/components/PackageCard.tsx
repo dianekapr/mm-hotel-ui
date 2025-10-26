@@ -1,57 +1,68 @@
 "use client";
 
-import React from "react";
-import type { PackageCardProps } from "@/types";
+import { cormorant } from "../fonts";
+import Link from "next/link";
+import Image from "next/image";
+import type { packageType } from "@/types";
 
-export const PackageCard = ({ package: pkg }: PackageCardProps) => {
+const GOLD = "#C69C4D";
+
+export default function PackageCard({ pkg }: { pkg: packageType }) {
   return (
-    <article className="overflow-hidden rounded-xl bg-white shadow hover:shadow-lg transition">
-      <div className="aspect-[16/10] w-full overflow-hidden">
-        <img
-          src={pkg.imageUrl}
-          alt={pkg.name}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
-
-      <div className="p-5">
-        <h3 className="text-xl font-semibold leading-tight">{pkg.name}</h3>
-        <p className="mt-1 text-sm text-gray-600">{pkg.duration}</p>
-
-        <p className="mt-3 text-gray-700">{pkg.description}</p>
-
-        {pkg.includes?.length ? (
-          <ul className="mt-4 list-disc pl-5 text-sm text-gray-700 space-y-1">
-            {pkg.includes.map((inc, i) => (
-              <li key={i}>{inc}</li>
-            ))}
-          </ul>
-        ) : null}
-
-        {pkg.addInfo?.length ? (
-          <details className="mt-4">
-            <summary className="cursor-pointer text-sm font-medium">Additional info</summary>
-            <ul className="mt-2 list-disc pl-5 text-sm text-gray-600 space-y-1">
-              {pkg.addInfo.map((it, i) => (
-                <li key={i}>{it}</li>
-              ))}
-            </ul>
-          </details>
-        ) : null}
-
-        <div className="mt-5 flex items-center justify-between">
-          <span className="text-base font-semibold">{pkg.price}</span>
-          <a
-            href="#book-now"
-            className="inline-flex items-center rounded-full border px-4 py-2 text-sm hover:bg-gray-50"
-          >
-            Book now
-          </a>
+    <div
+      data-card
+      className="snap-start w-[82vw] sm:w-[50vw] md:w-[32vw] lg:w-[24.2vw]"
+    >
+      <article className="group w-full">
+        {/* IMAGE */}
+        <div className="relative w-full aspect-[0.78] overflow-hidden rounded-[18px]">
+          <Image
+            src={pkg.imageUrl}
+            alt={pkg.name}
+            fill
+            priority={pkg.id === 1}
+            className="
+              object-cover 
+              transition-all duration-700 ease-[cubic-bezier(.25,.46,.45,.94)]
+              group-hover:brightness-[.68]
+              group-hover:translate-y-[-12px]
+            "
+            sizes="(max-width:1024px) 50vw, 24vw"
+          />
         </div>
-      </div>
-    </article>
-  );
-};
 
-export default PackageCard;
+        {/* DURATION — di bawah image, kiri */}
+        <div className="mt-3">
+          <span className="inline-block text-[12px] text-[#A78A5A] bg-[#F1E9D8]/90 px-3 py-[5px] rounded-full">
+            {pkg.duration}
+          </span>
+        </div>
+
+        {/* TEXT — kiri semua seperti mock */}
+        <div className="pt-5">
+          <h3
+            style={{ color: GOLD }}
+            className={`${cormorant.className} text-[22px] md:text-[24px] leading-tight`}
+          >
+            {pkg.name}
+          </h3>
+
+          <Link
+            href={`/packages/${pkg.slug}`}
+            style={{ color: GOLD, textDecoration: "none" }}
+            className="mt-2 inline-block text-[12px] uppercase tracking-wider font-semibold relative no-underline"
+          >
+            <span className="relative z-10">DISCOVER</span>
+  <span
+    className="
+      block w-full h-[1.5px] bg-current mt-0.5
+      transition-all duration-300
+      group-hover:opacity-0
+    "
+  />
+          </Link>
+        </div>
+      </article>
+    </div>
+  );
+}

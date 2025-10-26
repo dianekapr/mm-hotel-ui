@@ -1,65 +1,81 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import type { packageType as Pkg } from "@/types";
+import React, { useEffect, useRef, useState } from "react";
+import type { packageType } from "@/types";
+import { cormorant } from "../fonts";
+import PackageCard from "./PackageCard";
+
+const GOLD = "#C69C4D";
 
 export default function Package() {
-  const [items, setItems] = useState<Pkg[]>([]);
+  const [items, setItems] = useState<packageType[]>([]);
   const [loading, setLoading] = useState(true);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const run = async () => {
+    (async () => {
       try {
         const res = await fetch("/api/packages", { cache: "no-store" });
         const data = await res.json();
         setItems(data);
-      } catch (e) {
-        console.error(e);
       } finally {
         setLoading(false);
       }
-    };
-    run();
+    })();
   }, []);
 
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-10 tracking-wide">
-          Packages
-        </h2>
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const step = (card?.offsetWidth ?? 420) + 28;
+    el.scrollBy({ left: dir === "right" ? step : -step, behavior: "smooth" });
+  };
 
-        {loading ? (
-          <p className="text-center">Loading…</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {items.map((pkg) => (
-              <article
-                key={pkg.id}
-                className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition"
-              >
-                <img
-                  src={pkg.imageUrl}
-                  alt={pkg.name}
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-4 md:p-5">
-                  <h3 className="text-lg font-semibold">{pkg.name}</h3>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 mt-1">
-                    {pkg.duration}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed">{pkg.description}</p>
-                  <ul className="mt-3 text-sm list-disc pl-5 space-y-1">
-                    {pkg.addInfo.map((x, i) => (
-                      <li key={i}>{x}</li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 text-sm font-medium">{pkg.price}</div>
-                </div>
-              </article>
-            ))}
+  return (
+    <section className="bg-[#EDE8D9] py-28">
+      <h2
+        className={`${cormorant.className} text-center text-[#C69C4D] font-normal mb-16`}
+        style={{ fontSize: "clamp(22px, 2.4vw, 34px)" }}
+      >
+        Make memories you’ll never forget.
+      </h2>
+
+      {/* pl ditambah supaya arrow agak geser ke kanan */}
+      <div className="flex items-center gap-10 max-w-[1600px] mx-auto pl-[9vw] pr-[2vw]">
+        {/* ARROWS */}
+        <div className="hidden md:flex flex-col gap-5">
+          <button
+            onClick={() => scroll("left")}
+            className="h-14 w-14 border rounded-md text-xl grid place-items-center hover:bg-white/60 transition"
+            style={{ borderColor: GOLD, color: GOLD }}
+            aria-label="Prev"
+          >
+            ←
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="h-14 w-14 border rounded-md text-xl grid place-items-center hover:bg-white/60 transition"
+            style={{ borderColor: GOLD, color: GOLD }}
+            aria-label="Next"
+          >
+            →
+          </button>
+        </div>
+
+        {/* CAROUSEL — track di-center */}
+        <div
+          ref={scrollerRef}
+          className="overflow-x-auto scroll-smooth no-scrollbar flex-1"
+        >
+          <div className="flex gap-8 min-w-max mx-auto justify-center">
+            {loading ? (
+              <div className="py-24 text-black/60">Loading…</div>
+            ) : (
+              items.map((pkg) => <PackageCard key={pkg.id} pkg={pkg} />)
+            )}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

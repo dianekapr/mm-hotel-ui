@@ -27,6 +27,7 @@ export type activityType = {
 export type packageType = {
   id: number
   name: string
+  slug: string
   duration: string
   description: string
   imageUrl: string
