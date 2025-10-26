@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { cormorant } from "../fonts"; // ✅ USE THIS
+import { cormorant } from "../fonts"; 
 
 const GOLD = "#C8A45D";
 
