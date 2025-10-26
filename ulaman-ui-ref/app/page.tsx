@@ -6,7 +6,6 @@ import About from "./components/About";
 import Room from "./components/Room";
 import Dining from "./components/Dining";
 import SpaVideo from "./components/SpaVideo";
-import Retreats from "./components/Retreats";
 import Package from "./components/Package";
 import Reviews from "./components/Reviews";
 import MapSection from "./components/MapSection";
@@ -16,6 +15,7 @@ import Activities from "./components/Activites";
 import Tagline from "./components/Tagline";
 import ArchMediaHero from "./components/ArchMedia";
 import Tagline2 from "./components/Tagline2";
+import RetreatSplit from "./components/Retreats";
 
 
 export default function Home() {
@@ -36,21 +36,31 @@ export default function Home() {
 
         <Package/>
 
+        <RetreatSplit
+        leftSrc="/retreats1.avif"
+        rightSrc="/retreats2.avif"
+        heading="Discover your path to wellness and growth."
+        body="At Ulaman we redefine luxury as an experience that not only pampers the senses but also nurtures the soul. Nestled in pristine nature, our eco-luxury retreat offers a sanctuary for healing and transformation."
+        ctaLabel="LEARN MORE"
+        onCtaHref="/retreats"
+        sectionHeightVH={160}       // more runway = slower feel
+        openThreshold={0.33}        // start opening after ~1/3 enters
+        closeThreshold={0.33}       // start closing when ~1/3 remains
+      />
+
+      <div>
+      <h1 className="text-center my-8 text-3xl font-bold">Welcome to Our Resort</h1>
+      <SpaVideo />
+    </div>
+
+    <Dining/>
 
       <section id="activities" className="py-6">
         <Activities />
       </section>
 
-      <section id="culinary" className="py-6">
-        <Dining />
-      </section>
-
-      <section id="spa" className="py-6">
+           <section id="spa" className="py-6">
         <SpaVideo />
-      </section>
-
-      <section id="retreats" className="py-6">
-        <Retreats />
       </section>
 
       <section id="schedule" className="py-6">

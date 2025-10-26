@@ -1,7 +1,7 @@
-"use client"
+// components/VideoSection.js
 import { useState } from 'react';
 
-const SpaVideo = () => {
+const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
@@ -9,7 +9,7 @@ const SpaVideo = () => {
   };
 
   return (
-    <div className="relative overflow-hidden w-full h-[500px] bg-cream">
+    <div className="relative overflow-hidden w-full h-[500px] bg-[#f8f5e4]">
       {/* Scrolling Text */}
       <div className="absolute top-0 left-0 right-0 flex flex-col z-10">
         <div className="text-2xl font-bold text-center animate-scroll-left">Balance - Relax</div>
@@ -24,12 +24,12 @@ const SpaVideo = () => {
             autoPlay
             className="w-full h-full object-cover"
           >
-            <source src="/spa.mp4" type="video/mp4" />
+            <source src="/path-to-your-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         ) : (
           <img
-            src="/about2.avif"
+            src="/path-to-your-image.jpg"
             alt="Resort Image"
             className="w-full h-full object-cover cursor-pointer"
             onClick={handlePlayClick}
@@ -44,4 +44,4 @@ const SpaVideo = () => {
   );
 };
 
-export default SpaVideo;
+export default VideoSection;
