@@ -2,7 +2,7 @@
 
 import type { MapSectionProps } from "@/types"
 
-export const MapSection = ({}: MapSectionProps) => {
+const MapSection = ({}: MapSectionProps) => {
   const facilities = [
     { name: "Cliffside Yoga Shala", x: "25%", y: "35%" },
     { name: "Cocoon Jungle", x: "45%", y: "25%" },
@@ -59,3 +59,5 @@ export const MapSection = ({}: MapSectionProps) => {
     </section>
   )
 }
+
+export default MapSection

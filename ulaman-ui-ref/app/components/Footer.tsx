@@ -1,24 +1,39 @@
-const Footer = () => {
+import React from "react";
+
+export default function Footer() {
   return (
-    <footer className="bg-[#A19C96] text-white py-6">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <div>
-            <h3 className="text-2xl font-semibold">Ulaman Eco Luxury Resort</h3>
-            <p className="text-sm">Bali, Indonesia</p>
-          </div>
-          <div className="flex space-x-4">
-            <a href="#" className="text-white hover:text-gray-300">Facebook</a>
-            <a href="#" className="text-white hover:text-gray-300">Instagram</a>
-            <a href="#" className="text-white hover:text-gray-300">Twitter</a>
-          </div>
+    <footer className="bg-[#1F1F1F] text-white mt-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 grid md:grid-cols-3 gap-8">
+        <div>
+          <div className="w-10 h-10 rounded-full bg-[#6B705C]" />
+          <p className="mt-3 text-sm text-white/80">
+            Eco-Luxury retreat surrounded by rice fields and rivers.
+          </p>
         </div>
-        <div className="mt-4 text-center text-sm text-gray-200">
-          &copy; {new Date().getFullYear()} Ulaman Eco Luxury Resort. All rights reserved.
+        <div>
+          <h4 className="font-semibold">Explore</h4>
+          <ul className="mt-3 space-y-2 text-sm text-white/80">
+            <li><a href="#rooms" className="hover:opacity-80">Rooms</a></li>
+            <li><a href="#activities" className="hover:opacity-80">Activities</a></li>
+            <li><a href="#retreats" className="hover:opacity-80">Retreats</a></li>
+            <li><a href="#packages" className="hover:opacity-80">Packages</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-semibold">Contact</h4>
+          <ul className="mt-3 space-y-2 text-sm text-white/80">
+            <li>Buwit, Tabanan, Bali</li>
+            <li>+62 812-0000-0000</li>
+            <li>reservations@yourdomain.com</li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-12 flex items-center justify-between text-xs text-white/70">
+          <span>© {new Date().getFullYear()} Ulaman Eco Luxury Resort</span>
+          <span>Privacy • Terms</span>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

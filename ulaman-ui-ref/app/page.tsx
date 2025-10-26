@@ -1,37 +1,67 @@
-import { HeroSectProps } from "@/types";
-import Hero from "@/app/components/Hero";  // Import Hero component
-import About from "@/app/components/About"; // Import About component
-import Activities from "@/app/components/Activites"; // Import Activities component
-// import Footer from "@/app/components/Footer"; // Import Footer component
-
 export const dynamic = "force-dynamic";
+
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Room from "./components/Room";
+import Dining from "./components/Dining";
+import SpaVideo from "./components/SpaVideo";
+import Retreats from "./components/Retreats";
+import Package from "./components/Package";
+import Reviews from "./components/Reviews";
+import MapSection from "./components/MapSection";
+import WeeklySched from "./components/WeeklySched";
+import Footer from "./components/Footer";
+import Activities from "./components/Activites";
 
 export default function Home() {
   return (
     <div className="bg-[#D8E2DC] text-black">
-      {/* Hero Section with Video */}
-      <section className="relative w-full h-[400px] md:h-[550px] overflow-hidden">
-        <video
-          src="/video.mp4"
-          autoPlay
-          loop
-          muted
-          className="w-full h-full object-cover"
-        />
-      </section>
+      <Navbar />
 
-      {/* About Section */}
-      <div className="py-6">
+      <Hero />
+
+      <div id="about" className="py-6">
         <About />
       </div>
 
-      {/* Activities Section */}
-      <div className="py-6 bg-[#F1F1F1]">
-        <Activities />
-      </div>
+      <section id="rooms" className="py-6">
+        <Room />
+      </section>
 
-      {/* Footer Section */}
-      {/* <Footer /> */}
+      <section id="activities" className="py-6">
+        <Activities />
+      </section>
+
+      <section id="culinary" className="py-6">
+        <Dining />
+      </section>
+
+      <section id="spa" className="py-6">
+        <SpaVideo />
+      </section>
+
+      <section id="retreats" className="py-6">
+        <Retreats />
+      </section>
+
+      <section id="packages" className="py-6">
+        <Package />
+      </section>
+
+      <section id="schedule" className="py-6">
+        <WeeklySched />
+      </section>
+
+      <section id="reviews" className="py-6">
+        <Reviews />
+      </section>
+
+      <section id="map" className="py-6">
+        <MapSection />
+      </section>
+
+      <Footer />
     </div>
   );
 }

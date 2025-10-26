@@ -1,23 +1,31 @@
 import React from "react";
-import { activityType } from "@/types";
+import type { ActivityCardProps } from "@/types";
 
-type ActivityCardProps = {
-  activity: activityType;
-};
-
-export const ActivityCard = ({ activity }: ActivityCardProps) => {
+export default function ActivityCard({ activity }: ActivityCardProps) {
   return (
-    <div className="border rounded-lg overflow-hidden shadow-lg">
+    <article className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition">
       <img
         src={activity.imageUrl}
         alt={activity.name}
-        className="w-full h-48 object-cover"
+        className="w-full h-56 object-cover"
       />
-      <div className="p-4">
-        <h3 className="text-xl font-bold">{activity.name}</h3>
-        <p className="text-gray-500">{activity.duration}</p>
-        <p className="mt-2">{activity.description.join(" ")}</p>
+      <div className="p-4 md:p-5">
+        <h3 className="text-lg font-semibold">{activity.name}</h3>
+        <p className="text-xs uppercase tracking-wide text-gray-500 mt-1">
+          {activity.category} • {activity.duration}
+        </p>
+        <p className="mt-3 text-sm leading-relaxed">
+          {Array.isArray(activity.description)
+            ? activity.description.join(" ")
+            : activity.description}
+        </p>
+        <div className="mt-4 text-sm font-medium">
+          {activity.price.join(" / ")}
+        </div>
+        {activity.addInfo && (
+          <div className="mt-1 text-xs text-gray-500">{activity.addInfo}</div>
+        )}
       </div>
-    </div>
+    </article>
   );
-};
+}

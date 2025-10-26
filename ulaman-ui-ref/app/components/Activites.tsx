@@ -1,33 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { ActivityCard } from "./ActivityCard";
-import { activityType } from "@/types";
+"use client";
 
-const Activities = () => {
-  const [activities, setActivities] = useState<activityType[]>([]);
+import React, { useEffect, useState } from "react";
+import type { activityType } from "@/types";
+import ActivityCard from "./ActivityCard";
+
+export default function Activities() {
+  const [items, setItems] = useState<activityType[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch activities from API or mock data
-    const fetchActivities = async () => {
-      const response = await fetch("/api/activities");
-      const data = await response.json();
-      setActivities(data);
+    const run = async () => {
+      try {
+        const res = await fetch("/api/activities", { cache: "no-store" });
+        const data = await res.json();
+        setItems(data);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
     };
-
-    fetchActivities();
+    run();
   }, []);
 
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-10">Our Activities</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {activities.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} />
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-10 tracking-wide">
+          Activities
+        </h2>
+
+        {loading ? (
+          <p className="text-center">Loading…</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {items.map((a) => (
+              <ActivityCard key={a.id} activity={a} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
-};
-
-export default Activities;
+}
