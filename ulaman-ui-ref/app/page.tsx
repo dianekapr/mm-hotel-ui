@@ -14,10 +14,12 @@ import WeeklySched from "./components/WeeklySched";
 import Footer from "./components/Footer";
 import Activities from "./components/Activites";
 import Tagline from "./components/Tagline";
+import ArchMediaHero from "./components/ArchMedia";
+
 
 export default function Home() {
   return (
-    <div className="bg-[#D8E2DC] text-black">
+    <div className="bg-[#EDE8D9] text-black">
       <Navbar />
 
       <Hero />
@@ -25,6 +27,10 @@ export default function Home() {
       <Tagline />        
       <About />
         <Room />
+
+        <ArchMediaHero src="/arch-media.avif" 
+        />
+
 
       <section id="activities" className="py-6">
         <Activities />
