@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import Activities from "./components/Activites";
 import Tagline from "./components/Tagline";
 import ArchMediaHero from "./components/ArchMedia";
+import Tagline2 from "./components/Tagline2";
 
 
 export default function Home() {
@@ -27,6 +28,8 @@ export default function Home() {
       <Tagline />        
       <About />
         <Room />
+
+        <Tagline2/>
 
         <ArchMediaHero src="/arch-media.avif" 
         />
