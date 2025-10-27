@@ -20,9 +20,7 @@ import RetreatSplit from "./components/Retreats";
 
 export default function Home() {
   return (
-    <div className="bg-[#EDE8D9] text-black">
-      <Navbar />
-
+    <div className="bg-[#EFEBE2] text-black">
       <Hero />
 
       <Tagline />        
@@ -48,34 +46,23 @@ export default function Home() {
         closeThreshold={0.33}       // start closing when ~1/3 remains
       />
 
-      <div>
-      <h1 className="text-center my-8 text-3xl font-bold">Welcome to Our Resort</h1>
+      
       <SpaVideo />
-    </div>
+
 
     <Dining/>
-
-      <section id="activities" className="py-6">
-        <Activities />
-      </section>
-
-           <section id="spa" className="py-6">
-        <SpaVideo />
-      </section>
-
-      <section id="schedule" className="py-6">
-        <WeeklySched />
-      </section>
-
-      <section id="reviews" className="py-6">
-        <Reviews />
-      </section>
 
       <section id="map" className="py-6">
         <MapSection />
       </section>
+<section id="reviews" className="py-6">
+        <Reviews />
+      </section>
+    <Activities/>
 
-      <Footer />
+      <section id="schedule" className="py-6">
+        <WeeklySched />
+      </section>
     </div>
   );
 }

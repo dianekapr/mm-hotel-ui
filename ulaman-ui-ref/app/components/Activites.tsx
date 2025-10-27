@@ -1,44 +1,54 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import type { activityType } from "@/types";
-import ActivityCard from "./ActivityCard";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import ActivityCard from "./ActivityCard"; // Changed to ActivityCard
+import { activityType } from "@/types";
 
-export default function Activities() {
-  const [items, setItems] = useState<activityType[]>([]);
+
+export default function ActivitiesSection() {
+  const [activities, setActivities] = useState<activityType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  // Fetching the data from the API
   useEffect(() => {
-    const run = async () => {
-      try {
-        const res = await fetch("/api/activities", { cache: "no-store" });
-        const data = await res.json();
-        setItems(data);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    run();
+    fetch("/api/activities")
+      .then((response) => response.json())
+      .then((data) => {
+        setActivities(data);
+      })
+      .catch((err) => {
+        setError("Failed to load activities.");
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-10 tracking-wide">
-          Activities
-        </h2>
+  if (loading) return <p>Loading...</p>; // Temporary loading message
+  if (error) return <p className="text-red-500 text-center py-10">{error}</p>;
 
-        {loading ? (
-          <p className="text-center">Loading…</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {items.map((a) => (
-              <ActivityCard key={a.id} activity={a} />
-            ))}
-          </div>
-        )}
+  return (
+    <section className="py-20 px-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 auto-rows-[100px] md:auto-rows-[250px]">
+        {/* Activity Cards */}
+        {activities.map((activity) => (
+          <ActivityCard
+            key={activity.id}
+            name={activity.name}
+            description={activity.description[0]} // Assuming the first description is the main one
+            duration={activity.duration}
+            price={activity.price}
+            imageUrl={activity.imageUrl}
+            addInfo={activity.addInfo}
+          />
+        ))}
+      </div>
+      <div className="flex w-full">
+        <Link href="#" className="mx-auto mt-4">
+          <span className="inline-block text-sm text-gold font-medium border-b border-gold transition-all duration-300 hover:border-transparent pb-[2px]">
+            Discover All Experiences
+          </span>
+        </Link>
       </div>
     </section>
   );

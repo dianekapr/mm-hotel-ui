@@ -36,9 +36,11 @@ export default function Package() {
     <section className="bg-[#EDE8D9] py-28">
       <h2
         className={`${cormorant.className} text-center text-[#C69C4D] font-normal mb-16`}
-        style={{ fontSize: "clamp(22px, 2.4vw, 34px)" }}
+        style={{ fontSize: "clamp(23px, 2.8vw, 37px)", letterSpacing: "0.4px" }}
       >
-        Make memories you’ll never forget.
+        Book one of our special <br/>
+        packages for a getaway you’ll <br/>
+        never forget.
       </h2>
 
       {/* pl ditambah supaya arrow agak geser ke kanan */}

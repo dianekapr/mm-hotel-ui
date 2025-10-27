@@ -44,7 +44,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || isModalOpen ? "bg-[#F1EDE6]/95 backdrop-blur shadow" : "bg-transparent"
+          isScrolled || isModalOpen ? "bg-[#EFEBE2]/95 backdrop-blur shadow" : "bg-transparent"
         }`}
         role="banner"
       >

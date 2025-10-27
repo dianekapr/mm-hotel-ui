@@ -1,31 +1,55 @@
-import React from "react";
-import type { ActivityCardProps } from "@/types";
+"use client";
 
-export default function ActivityCard({ activity }: ActivityCardProps) {
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from 'react';
+
+type ActivityCardProps = {
+  name: string;
+  description: string;
+  duration: string;
+  price: string[];
+  imageUrl: string;
+  addInfo: string;
+};
+
+export default function ActivityCard({
+  name,
+  description,
+  duration,
+  price,
+  imageUrl,
+  addInfo,
+}: ActivityCardProps) {
+  const [index, setIndex] = useState(0);
+
   return (
-    <article className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition">
-      <img
-        src={activity.imageUrl}
-        alt={activity.name}
-        className="w-full h-56 object-cover"
-      />
-      <div className="p-4 md:p-5">
-        <h3 className="text-lg font-semibold">{activity.name}</h3>
-        <p className="text-xs uppercase tracking-wide text-gray-500 mt-1">
-          {activity.category} • {activity.duration}
-        </p>
-        <p className="mt-3 text-sm leading-relaxed">
-          {Array.isArray(activity.description)
-            ? activity.description.join(" ")
-            : activity.description}
-        </p>
-        <div className="mt-4 text-sm font-medium">
-          {activity.price.join(" / ")}
+    <div className="relative w-full h-full">
+      <div className="flex flex-col bg-white rounded-xl shadow-lg overflow-hidden">
+        {/* Image */}
+        <div className="relative h-56">
+          <Image
+            src={imageUrl}
+            alt={name}
+            fill
+            className="object-cover rounded-t-xl"
+          />
         </div>
-        {activity.addInfo && (
-          <div className="mt-1 text-xs text-gray-500">{activity.addInfo}</div>
-        )}
+
+        {/* Card Content */}
+        <div className="p-4">
+          <h3 className="text-gold text-xl font-semibold">{name}</h3>
+          <p className="text-gray-700 text-sm mt-2">{description}</p>
+          <p className="text-gray-600 text-xs mt-2">
+            Duration: {duration}
+          </p>
+          <p className="text-gray-600 text-xs mt-1">
+            Price: {price.join(" / ")}
+          </p>
+          <p className="text-gray-500 text-xs mt-1">{addInfo}</p>
+        </div>
       </div>
-    </article>
+    </div>
   );
 }
+
