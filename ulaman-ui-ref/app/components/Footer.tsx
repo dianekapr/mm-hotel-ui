@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import { cormorant } from "../fonts";
 
-// Data for menu items
 const menuItems = [
   "Home",
   "About Us",
@@ -21,13 +21,13 @@ const menuItems = [
 ];
 
 const awardLogos = [
-  "/images/award-1.avif",
-  "/images/award-2.avif",
-  "/images/award-3.avif",
-  "/images/award-4.avif",
-  "/images/award-5.avif",
-  "/images/award-6.avif",
-  "/images/award-7.avif",
+  "/award-1.avif",
+  "/award-2.avif",
+  "/award-3.avif",
+  "/award-4.avif",
+  "/award-5.avif",
+  "/award-6.avif",
+  "/award-7.avif",
 ];
 
 const linksLeft = [
@@ -51,11 +51,9 @@ const packages = [
 export default function Footer() {
   return (
     <div className="bg-[rgb(96,109,97)] text-white py-12 text-sm flex flex-col items-center gap-10 px-[4rem]">
-      {/* Review Stars */}
       <div className="space-y-1 text-center">
         <p className="flex justify-center items-center gap-2">
           <span className="font-semibold text-white">4.8</span>
-          {/* Manual Star Icon */}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-white">
             <path
               d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -66,7 +64,6 @@ export default function Footer() {
         </p>
         <p className="flex justify-center items-center gap-2">
           <span className="font-semibold text-white">5.0</span>
-          {/* Manual Star Icon */}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-white">
             <path
               d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -77,7 +74,6 @@ export default function Footer() {
         </p>
       </div>
 
-      {/* Booking Form */}
       <div className="w-full flex flex-col gap-10 md:flex-row max-w-3xl">
         <div className="flex flex-wrap justify-around items-between w-full items-center gap-4 text-white lg:border-r lg:border-white">
           <span className="mb-1">Check In</span>
@@ -95,19 +91,19 @@ export default function Footer() {
       <div className="flex flex-col w-full gap-8 md:flex-row-reverse md:mt-10">
         <div className="w-full aspect-square relative">
           <Image
-            src={"/images/footer-map.avif"}
+            src={"/footer-map.avif"}
             alt={"footer map"}
             fill
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col w-full gap-6 md:justify-center">
-          <h2 className="font-semibold text-2xl font-serif">
-            Tucked Within Majestic Balinese Nature.
+        <div className="flex flex-col w-full gap-6 pl-15 md:justify-center">
+          <h2 className={`font-normal text-4xl ${cormorant.className}`}>
+            Tucked Within <br /> Majestic Balinese <br /> Nature.
           </h2>
           <p>
-            Strategically located near popular areas like Canggu and Ubud,
-            experience tranquil nature and luxury. With endless activities,
+            Strategically located near popular areas like Canggu and Ubud, <br />
+            experience tranquil nature and luxury. With endless activities, <br />
             you&apos;ll never want to leave Ulaman.
           </p>
         </div>
@@ -120,7 +116,6 @@ export default function Footer() {
       <FooterAwardsMarquee />
       <FooterInfo />
 
-      {/* Hardcoded Packages Marquee */}
       <div className="overflow-hidden text-green-dark text-sm py-4">
         <div className="whitespace-nowrap animate-marquee text-dark-emphasis">
           {packages.map((pkg, i) => (
@@ -149,7 +144,6 @@ export default function Footer() {
   );
 }
 
-// Adult Selector Component
 function FooterAdultSelector() {
   const [adults, setAdults] = useState(2);
   return (
@@ -172,7 +166,6 @@ function FooterAdultSelector() {
   );
 }
 
-// Awards Marquee Component
 function FooterAwardsMarquee() {
   return (
     <div className="overflow-hidden py-6 w-full">
@@ -202,7 +195,6 @@ function FooterAwardsMarquee() {
   );
 }
 
-// Connect Section Component
 function FooterConnectSection() {
   return (
     <div className="text-white w-full md:px-12 py-12 md:w-1/3">
@@ -227,7 +219,6 @@ function FooterConnectSection() {
   );
 }
 
-// Explore Menu Component
 function FooterExploreMenu() {
   const leftMenuItems = menuItems.slice(0, 6);
   const rightMenuItems = menuItems.slice(6, 12);
@@ -253,11 +244,9 @@ function FooterExploreMenu() {
   );
 }
 
-// Footer Info Component
 function FooterInfo() {
   return (
     <div className="text-white py-10 text-sm space-y-6 lg:flex lg:text-xs gap-3">
-      {/* Footer Information */}
       <div className="flex flex-wrap justify-start gap-6 text-xs">
         {[
           "Terms",
@@ -276,7 +265,6 @@ function FooterInfo() {
   );
 }
 
-// Subscribe Form Component
 function FooterSubscribeForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -304,7 +292,6 @@ function FooterSubscribeForm() {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-white text-xl md:text-base mb-1">Your Email*</label>
             <input
@@ -316,7 +303,6 @@ function FooterSubscribeForm() {
             />
           </div>
 
-          {/* Submit */}
           <button type="submit" className="text-lg text-white opacity-60 border-b border-white hover:opacity-100 transition">
             SUBMIT
           </button>

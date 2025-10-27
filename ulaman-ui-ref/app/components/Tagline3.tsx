@@ -7,21 +7,21 @@ export default function Tagline3() {
   return (
     <section
       className="w-full flex flex-col items-center justify-center text-center"
-      style={{ padding: "140px 0 100px" }} // ✅ same vertical spacing feel
+      style={{ padding: "140px 0 100px" }}
     >
       <h2
         className={`${cormorant.className} text-[#C69C4D] leading-snug font-normal`}
         style={{
-          fontSize: "clamp(26px, 3.2vw, 42px)", // ✅ proportional like Ulaman
+          fontSize: "clamp(26px, 3.2vw, 42px)", 
           letterSpacing: "0.4px",
           maxWidth: "1050px",
         }}
       >
         A world-class gastronomic journey where
         <br />
-nature’s finest ingredients meet culinary
-<br/>
-craftsmanship.
+        nature’s finest ingredients meet culinary
+        <br />
+        craftsmanship.
       </h2>
 
       <Link
@@ -31,10 +31,7 @@ craftsmanship.
       >
         <span className="relative z-10">VISIT THE WEBSITE</span>
 
-        {/* Underline */}
-        <span
-          className="block w-full h-[1.4px] bg-current mt-1 opacity-100 transition-opacity duration-300 group-hover:opacity-0"
-        />
+        <span className="block w-full h-[1.4px] bg-current mt-1 opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
       </Link>
     </section>
   );
