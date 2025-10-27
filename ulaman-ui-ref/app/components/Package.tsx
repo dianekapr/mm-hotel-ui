@@ -43,9 +43,7 @@ export default function Package() {
         never forget.
       </h2>
 
-      {/* Carousel with left and right buttons */}
       <div className="flex items-center gap-10 max-w-[1600px] mx-auto pl-[9vw] pr-[2vw]">
-        {/* ARROWS */}
         <div className="hidden md:flex flex-col gap-5">
           <button
             onClick={() => scroll("left")}
@@ -71,7 +69,7 @@ export default function Package() {
             {loading ? (
               <div className="py-24 text-black/60">Loading…</div>
             ) : (
-              items.map((pkg, index) => <PackageCard key={pkg.id} pkg={pkg} currentCard={index + 1} totalCards={items.length} onCardChange={(newIndex) => scroll(newIndex > index ? "right" : "left")} />)
+              items.map((pkg, index) => <PackageCard key={pkg.id} pkg={pkg} currentCard={index + 1} totalCards={items.length} onCardChangeAction={(newIndex) => scroll(newIndex > index ? "right" : "left")} />)
             )}
           </div>
         </div>

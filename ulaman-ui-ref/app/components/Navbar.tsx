@@ -231,7 +231,7 @@ export default function Navbar() {
 
       <MenuOverlay
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onCloseAction={() => setIsModalOpen(false)}
         navbarHeight={96}
       />
     </>

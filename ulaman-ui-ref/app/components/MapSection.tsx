@@ -170,7 +170,6 @@ export default function MapSection() {
         </div>
       </div>
 
-      {/* Map and Points */}
       <div className="w-full overflow-auto">
         <div className=" w-full max-w-screen-xl mx-auto aspect-[16/9] min-w-[900px]">
           <Image
@@ -203,12 +202,11 @@ export default function MapSection() {
             </div>
           ))}
 
-          {/* Fixed Panel (desktop only, absolute inside map area) */}
           {selectedPoint && (
             <div className="hidden lg:flex absolute top-0 left-1/2 -translate-x-1/2 z-10 w-[60%] h-[65%] max-w-3xl shadow-xl rounded-lg bg-[#EFEBE2] overflow-hidden">
               <MapModal
                 point={selectedPoint}
-                onCloseAction={() => setSelectedPoint(null)} // Match the prop name here
+                onCloseAction={() => setSelectedPoint(null)} 
               />
             </div>
           )}
