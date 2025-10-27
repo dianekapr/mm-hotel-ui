@@ -26,16 +26,15 @@ export default function Room() {
     })();
   }, []);
 
-  // geser tepat 1 kartu (22rem) + gap-3 (0.75rem)
   const scrollOne = (dir: "left" | "right") => {
     const el = scrollerRef.current;
     if (!el) return;
-    const one = 22 * 16 + 0.75 * 16; // px
+    const one = 22 * 16 + 0.75 * 16; 
     el.scrollBy({ left: dir === "right" ? one : -one, behavior: "smooth" });
   };
 
   return (
-    <section className="bg-[#EDE8D9] py-24">
+    <section className="py-24">
       {/* Heading */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <h2

@@ -17,7 +17,6 @@ export default function RoomCard({ room }: RoomsCardProps) {
 
   return (
     <article className="w-[26 rem] shrink-0">
-      {/* group untuk hover controls */}
       <div className="relative w-full aspect-[3/4] overflow-hidden rounded-[12px] group">
         <Image
           src={imgs[idx]}
@@ -28,7 +27,6 @@ export default function RoomCard({ room }: RoomsCardProps) {
           priority={idx === 0}
         />
 
-        {/* overlay arrows → muncul saat hover */}
         <button
           onClick={prev}
           aria-label="Prev image"
@@ -57,7 +55,6 @@ export default function RoomCard({ room }: RoomsCardProps) {
           →
         </button>
 
-        {/* bullets center-bottom */}
         <div className="absolute bottom-3 left-0 right-0 flex justify-center items-center gap-2">
           {imgs.map((_, i) => (
             <button
@@ -72,7 +69,6 @@ export default function RoomCard({ room }: RoomsCardProps) {
         </div>
       </div>
 
-      {/* caption selebar kartu */}
       <div className="pt-3 w-full">
         <h3
           className={`${cormorant.className} text-[25px] leading-tight font-medium text-[#C69C4D]`}
@@ -82,25 +78,23 @@ export default function RoomCard({ room }: RoomsCardProps) {
         <p className="mt-1 text-[14px] text-[#6D6D6D] italic leading-snug">
           {(room as any).shortDesc ?? room.description}
         </p>
-<Link
-  href={`/rooms/${room.slug}`}
-  className="
+        <Link
+          href={`/rooms/${room.slug}`}
+          className="
     group mt-2 inline-block text-[11px] uppercase tracking-wide font-semibold
     text-[#C69C4D] no-underline
   "
-  style={{ textDecoration: 'none', color: GOLD }}
->
-  <span className="relative z-10">DISCOVER</span>
-  <span
-    className="
+          style={{ textDecoration: "none", color: GOLD }}
+        >
+          <span className="relative z-10">DISCOVER</span>
+          <span
+            className="
       block w-full h-[1.5px] bg-current mt-0.5
       transition-all duration-300
       group-hover:opacity-0
     "
-  />
-</Link>
-
-
+          />
+        </Link>
       </div>
     </article>
   );

@@ -43,8 +43,7 @@ export default function Tagline() {
   let pointer = 0;
 
   return (
-    <section className="py-24 bg-[#EDE8D9]">
-      {/* ✅ CORMORANT APPLIED HERE */}
+    <section className="py-24">
       <div
         ref={containerRef}
         className={`${cormorant.className} max-w-4xl mx-auto px-6 text-center leading-[1.12] tracking-[0.4px]`}

@@ -37,14 +37,6 @@ function ParallaxImageComponent({ path }: { path: string }) {
 export default function DiningSection() {
   return (
     <section className="py-32 px-4 flex flex-col items-center">
-      <h2 className="text-gold text-xl font-serif text-center max-w-2xl leading-relaxed mb-4">
-        A world-class gastronomic journey where nature’s finest ingredients meet
-        culinary craftsmanship.
-      </h2>
-      <a className="text-sm text-gold border-b border-gold mb-16 cursor-pointer hover:opacity-70">
-        VISIT THE WEBSITE
-      </a>
-
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 w-full">
         {imagePaths.map((path, idx) => (
           <div key={idx} className={idx === 2 ? "hidden md:block" : "block"}>

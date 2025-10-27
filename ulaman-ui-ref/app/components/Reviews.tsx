@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 
-// ---- tune colors once, reuse everywhere ----
 const GOLD = "#C69C4D";
 const MUTED = "#617262";
 const FONT_PRIMARY = "'Cormorant', serif";
@@ -15,8 +14,8 @@ type Review = {
   shortTitle: string;
   platform: "TripAdvisor" | "Google Reviews";
   longText: string;
-  taScore?: number;        // if present, shows in recap
-  googleScore?: number;    // if present, shows in recap
+  taScore?: number;        
+  googleScore?: number;   
 };
 
 const data: Review[] = [
@@ -67,9 +66,7 @@ export default function ReviewsExact() {
 
   return (
     <section className="py-16 md:py-20">
-      {/* page padding (pl/pr) + max width */}
       <div className="mx-auto max-w-[1280px] px-6 md:px-10 xl:px-14">
-        {/* === TOP ROW: Title + recap on left, arrows on right (inline) === */}
         <div className="flex items-start justify-between gap-6">
           {/* LEFT: title + recap */}
           <div className="min-w-0">
@@ -127,7 +124,6 @@ export default function ReviewsExact() {
             </div>
           </div>
 
-          {/* col 2: short quote */}
           <div>
             <h3
               className="text-[20px] leading-snug"
@@ -137,14 +133,12 @@ export default function ReviewsExact() {
             </h3>
           </div>
 
-          {/* col 3: long text + link */}
           <div className="text-[16px] leading-[1.75] text-[#2d2d2d]" style={{ fontFamily: FONT_PRIMARY }}>
             <p className="text-[15px]" style={{ color: MUTED }}>
               {r.longText}
             </p>
 
             <button
-              onClick={next}
               className="mt-6 inline-block border-b-2 font-semibold uppercase tracking-[0.08em] text-[14px]"
               style={{ color: GOLD, borderColor: GOLD }}
             >

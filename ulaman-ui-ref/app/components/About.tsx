@@ -9,10 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const GOLD = "#C69C4D";
 
 const images = [
-  "/about-img1.jpg",
-  "/about-img2.jpg",
-  "/about-img3.jpg",
-]; // ✅ replace with your real image paths
+  "/about1.avif",
+  "/about2.avif",
+  "/about3.avif",
+]; 
 
 export default function About() {
   const [index, setIndex] = useState(0);
@@ -21,11 +21,10 @@ export default function About() {
   const prevSlide = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <section className="bg-[#EDE8D9] py-24">
+    <section className="py-24">
       <div className="max-w-6xl xl:max-w-5xl mx-auto grid md:grid-cols-2 gap-12 px-8 md:px-16 xl:px-24 items-center">
         
-        {/* LEFT IMAGE SLIDER */}
-        <div className="relative w-full aspect-[3/4] md:aspect-[5/6] overflow-hidden rounded-lg shadow-md">
+        <div className="relative w-full aspect-[3/4] md:aspect-[5/6] overflow-hidden rounded-lg shadow-md group">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -45,18 +44,22 @@ export default function About() {
             </motion.div>
           </AnimatePresence>
 
-          {/* ARROWS */}
+          {/* Left Button */}
           <button
             onClick={prevSlide}
-            className="absolute left-3 bottom-4 md:bottom-6 bg-white/70 hover:bg-white text-[#5A4B2F] p-2 rounded-full shadow-md transition"
+            aria-label="Prev image"
+            className="absolute left-3 bottom-3 w-[50px] h-[50px] rounded-md border border-white/80 bg-transparent opacity-0 group-hover:opacity-100 transition-all grid place-items-center text-white/90"
           >
-            <span className="text-lg font-semibold">←</span>
+            ←
           </button>
+
+          {/* Right Button */}
           <button
             onClick={nextSlide}
-            className="absolute right-3 bottom-4 md:bottom-6 bg-white/70 hover:bg-white text-[#5A4B2F] p-2 rounded-full shadow-md transition"
+            aria-label="Next image"
+            className="absolute right-3 bottom-3 w-[50px] h-[50px] rounded-md border border-white/80 bg-transparent opacity-0 group-hover:opacity-100 transition-all grid place-items-center text-white/90"
           >
-            <span className="text-lg font-semibold">→</span>
+            →
           </button>
 
           {/* BULLETS */}
@@ -65,9 +68,7 @@ export default function About() {
               <button
                 key={i}
                 onClick={() => setIndex(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${
-                  i === index ? "bg-[#C69C4D]" : "bg-white/70"
-                }`}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${i === index ? "bg-[#C69C4D]" : "bg-white/70"}`}
               />
             ))}
           </div>

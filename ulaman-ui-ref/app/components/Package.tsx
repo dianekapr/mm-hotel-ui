@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import type { packageType } from "@/types";
-import { cormorant } from "../fonts";
 import PackageCard from "./PackageCard";
+import { cormorant } from "../fonts";
 
 const GOLD = "#C69C4D";
 
@@ -33,17 +33,17 @@ export default function Package() {
   };
 
   return (
-    <section className="bg-[#EDE8D9] py-28">
+    <section className="py-28">
       <h2
         className={`${cormorant.className} text-center text-[#C69C4D] font-normal mb-16`}
         style={{ fontSize: "clamp(23px, 2.8vw, 37px)", letterSpacing: "0.4px" }}
       >
-        Book one of our special <br/>
-        packages for a getaway you’ll <br/>
+        Book one of our special <br />
+        packages for a getaway you’ll <br />
         never forget.
       </h2>
 
-      {/* pl ditambah supaya arrow agak geser ke kanan */}
+      {/* Carousel with left and right buttons */}
       <div className="flex items-center gap-10 max-w-[1600px] mx-auto pl-[9vw] pr-[2vw]">
         {/* ARROWS */}
         <div className="hidden md:flex flex-col gap-5">
@@ -65,16 +65,13 @@ export default function Package() {
           </button>
         </div>
 
-        {/* CAROUSEL — track di-center */}
-        <div
-          ref={scrollerRef}
-          className="overflow-x-auto scroll-smooth no-scrollbar flex-1"
-        >
+        {/* CAROUSEL */}
+        <div ref={scrollerRef} className="overflow-x-auto scroll-smooth no-scrollbar flex-1">
           <div className="flex gap-8 min-w-max mx-auto justify-center">
             {loading ? (
               <div className="py-24 text-black/60">Loading…</div>
             ) : (
-              items.map((pkg) => <PackageCard key={pkg.id} pkg={pkg} />)
+              items.map((pkg, index) => <PackageCard key={pkg.id} pkg={pkg} currentCard={index + 1} totalCards={items.length} onCardChange={(newIndex) => scroll(newIndex > index ? "right" : "left")} />)
             )}
           </div>
         </div>

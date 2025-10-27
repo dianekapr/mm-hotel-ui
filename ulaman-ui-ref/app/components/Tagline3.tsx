@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { cormorant } from "../fonts";
 
-export default function Tagline2() {
+export default function Tagline3() {
   return (
     <section
       className="w-full flex flex-col items-center justify-center text-center"
@@ -17,17 +17,19 @@ export default function Tagline2() {
           maxWidth: "1050px",
         }}
       >
-        Experience a blend of nature, comfort and
+        A world-class gastronomic journey where
         <br />
-        luxury like never before.
+nature’s finest ingredients meet culinary
+<br/>
+craftsmanship.
       </h2>
 
       <Link
-        href="/rooms"
+        href="https://earthbyulaman.com/"
         className="uppercase font-semibold tracking-[0.8px] mt-7 relative"
         style={{ fontSize: "13px", color: "#C69C4D" }}
       >
-        <span className="relative z-10">BOOK YOUR STAY</span>
+        <span className="relative z-10">VISIT THE WEBSITE</span>
 
         {/* Underline */}
         <span

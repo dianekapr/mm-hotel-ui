@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const days = [
   "Monday",
@@ -29,7 +30,6 @@ export default function WeeklySched() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Helper function to simulate fetching data
   const fetchSchedule = async (): Promise<ScheduleRow[]> => {
     return new Promise<ScheduleRow[]>((resolve) => {
       setTimeout(() => {
@@ -43,47 +43,21 @@ export default function WeeklySched() {
   };
 
   const getBgClass = (activity: string) => {
-    if (activity.includes("Yoga")) return "bg-[#d9ebc4]"; // Light green
-    if (activity.includes("Sound")) return "bg-[#c6d4d3]"; // Light blue
+    if (activity.includes("Yoga")) return "bg-[#d9ebc4]";
+    if (activity.includes("Sound")) return "bg-[#c6d4d3]"; 
     return "";
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-10">
-        <svg
-          className="animate-spin h-8 w-8 text-gold"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          ></circle>
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-          ></path>
-        </svg>
-      </div>
-    );
-  }
-
+  if (loading) return <p className="text-gray-500 text-center py-10">{loading}</p>;
   if (error) return <p className="text-red-500 text-center py-10">{error}</p>;
 
   return (
     <section className="py-20 px-6 md:px-16 mx-auto max-w-6xl">
       <div className="text-center mb-10">
-        <h2 className="text-gold text-4xl font-serif leading-tight">
+        <h2 className="text-[#C69C4D] text-4xl font-serif leading-tight">
           Weekly Schedule
         </h2>
-        <p className="text-brown text-lg mt-2 font-light">
+        <p className="text-brown text-sm mt-2 font-light">
           Advanced Booking Is Recommended
         </p>
       </div>
@@ -96,7 +70,7 @@ export default function WeeklySched() {
               {days.map((day) => (
                 <th
                   key={day}
-                  className="text-gold text-sm font-medium py-4 px-2 border-b border-l border-gold"
+                  className="text-[#C69C4D] text-sm font-medium py-4 px-2 border-b border-l border-gold"
                 >
                   {day}
                 </th>
@@ -106,13 +80,13 @@ export default function WeeklySched() {
           <tbody>
             {schedule.map((row, j) => (
               <tr key={row.time}>
-                <td className="text-gold text-sm py-4 pr-2 border-t border-r border-gold align-top">
+                <td className="text-[#C69C4D] text-sm py-4 pr-2 border-t border-r border-gold align-top">
                   {row.time}
                 </td>
                 {row.activities.map((activity: string, i: number) => (
                   <td
                     key={i}
-                    className={`border-gold h-[80px] align-top px-2 ${
+                    className={`border-[#C69C4D] h-[80px] align-top px-2 ${
                       j !== schedule.length - 1 && "border-b"
                     } ${i !== row.activities.length - 1 && "border-r"}`}
                   >
@@ -133,11 +107,17 @@ export default function WeeklySched() {
         </table>
       </div>
 
-      <div className="mt-6 text-sm text-gold underline text-left">
-        <a href="/api/schedule-pdf" target="_blank">
-          DOWNLOAD PDF
-        </a>
-      </div>
+      <div className="mt-6 text-left">
+  <Link
+    href="/"
+    className="group inline-block mt-6 text-[13px] font-semibold tracking-wide uppercase relative no-underline"
+    style={{ color: "#C69C4D", textDecoration: "none" }}
+  >
+    <span className="relative z-10">DOWNLOAD PDF</span>
+    <span className="block w-full h-[1.5px] bg-current mt-0.5 transition-all duration-300 group-hover:opacity-0" />
+  </Link>
+</div>
+
     </section>
   );
 }

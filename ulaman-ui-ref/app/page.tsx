@@ -16,53 +16,48 @@ import Tagline from "./components/Tagline";
 import ArchMediaHero from "./components/ArchMedia";
 import Tagline2 from "./components/Tagline2";
 import RetreatSplit from "./components/Retreats";
-
+import Tagline3 from "./components/Tagline3";
+import Tagline4 from "./components/Tagline4";
 
 export default function Home() {
   return (
     <div className="bg-[#EFEBE2] text-black">
       <Hero />
 
-      <Tagline />        
+      <Tagline />
       <About />
-        <Room />
+      <Room />
 
-        <Tagline2/>
+      <Tagline2 />
 
-        <ArchMediaHero src="/arch-media.avif" 
-        />
+      <ArchMediaHero src="/arch-media.avif" />
 
-        <Package/>
+      <Package />
 
-        <RetreatSplit
+      <RetreatSplit
         leftSrc="/retreats1.avif"
         rightSrc="/retreats2.avif"
         heading="Discover your path to wellness and growth."
         body="At Ulaman we redefine luxury as an experience that not only pampers the senses but also nurtures the soul. Nestled in pristine nature, our eco-luxury retreat offers a sanctuary for healing and transformation."
         ctaLabel="LEARN MORE"
         onCtaHref="/retreats"
-        sectionHeightVH={160}       // more runway = slower feel
-        openThreshold={0.33}        // start opening after ~1/3 enters
-        closeThreshold={0.33}       // start closing when ~1/3 remains
+        sectionHeightVH={160}
+        openThreshold={0.33}
+        closeThreshold={0.33}
       />
 
-      
       <SpaVideo />
 
+      <Tagline3 />
+      <Dining />
 
-    <Dining/>
+      <MapSection />
+      <Reviews />
 
-      <section id="map" className="py-6">
-        <MapSection />
-      </section>
-<section id="reviews" className="py-6">
-        <Reviews />
-      </section>
-    <Activities/>
+      <Activities />
 
-      <section id="schedule" className="py-6">
-        <WeeklySched />
-      </section>
+      <WeeklySched />
+      <Tagline4 />
     </div>
   );
 }
